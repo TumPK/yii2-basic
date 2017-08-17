@@ -34,13 +34,14 @@ class LecturerController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
-        $searchModel = new CarSearchModel();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+    {    
+        $var = "Hello World";
+		$model = Lecturer::findOne(["name"=>"ผศ. อุหมาด หมัดอาด้ำ"]);
+       
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+       
+        	'hello' => $var,
+        	'model' => $model
         ]);
     }
 
