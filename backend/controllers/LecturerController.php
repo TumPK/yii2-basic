@@ -8,6 +8,7 @@ use backend\models\CarSearchModel;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\Course;
 
 /**
  * LecturerController implements the CRUD actions for Lecturer model.
@@ -37,6 +38,10 @@ class LecturerController extends Controller
     {    
         $var = "Hello World";
 		$model = Lecturer::findOne(["name"=>"ผศ. อุหมาด หมัดอาด้ำ"]);
+		
+		$lecturerModel = new Course();
+		
+		var_dump($lecturerModel);
        
         return $this->render('index', [
        
