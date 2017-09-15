@@ -7,6 +7,7 @@ $this->registerJsFile('@web/plugin/jquery-jvectormap-world-mill-en.js',['depends
 
 use yii\web\View;
 use yii\helpers\Html;
+use common\libs\Status;
 
 $str = <<<EOT
 
@@ -43,9 +44,9 @@ echo  Html::dropDownList( 'lecturer',
 <input type="submit" value="ส่ง">
 </form>
 
-<h1>dropdown from array</h1>
+<h1>dropdown from array (location file: common/libs/status.php)</h1>
 <form>
-
+<?php echo Html::dropDownList('status', $status, [0=>'ทั้งหมด']+ Status::$arrStatus , ['id'=> 'status', 'class'=> 'form-control'])?>
 <input type="submit" value="ส่ง">
 </form>
 

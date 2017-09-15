@@ -46,13 +46,15 @@ class ProjectController extends Controller
     	$this->layout = "@backend/themes/adminlte/layouts/index";
     	$request = \Yii::$app->request;
     	$lecturerId = $request->get('lecturer', null);
+    	$status = $request->get('status', null);
     	
     	$lecturerModel = new Lecturer();
     	$listLecturer = Lecturer::find()->all();
     	$arrLecturer = ArrayHelper::map($listLecturer,function ($lecturerModel){return  (string)$lecturerModel->_id;},'name');
         return $this->render('index',[
         		"arrLecturer" => $arrLecturer,
-        		"lecturerId" => $lecturerId
+        		"lecturerId" => $lecturerId,
+        		"status" => $status
         ]);
     }
 
