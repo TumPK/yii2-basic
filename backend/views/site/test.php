@@ -45,7 +45,11 @@ $(document).ready(function(){
 				
 	function tBody(data){
 		var strTable = head();
-
+				
+// 		$.each([ 52, 97 ], function( index, value ) {
+// 		  alert( index + ": " + value );
+// 		});
+				
 		$('#list').html(strTable);
 	}
 						
