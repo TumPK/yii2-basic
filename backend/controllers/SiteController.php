@@ -6,6 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use backend\models\Course;
 
 /**
  * Site controller
@@ -18,26 +19,7 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+            
         ];
     }
 
@@ -94,5 +76,32 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+    
+    public function actionTest()
+    {
+    	return $this->render('test', []);
+    }
+    
+    public function beforeAction($action)
+    {
+    	if ($action->id == 'my-method') {
+    		$this->enableCsrfValidation = false;
+    	}
+    
+    	return parent::beforeAction($action);
+    }
+    
+    public function actionSend(){
+    	if (Yii::$app->request->isAjax) {
+    		$data = Yii::$app->request->post();
+    	
+    		$search = Course::find()->all();
+    		
+    		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+    		return [
+    				'data' => $search
+    		];
+    	}
     }
 }
