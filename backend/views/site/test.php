@@ -46,9 +46,14 @@ $(document).ready(function(){
 	function tBody(data){
 		var strTable = head();
 				
-// 		$.each([ 52, 97 ], function( index, value ) {
-// 		  alert( index + ": " + value );
-// 		});
+		$.each(data, function( index, obj ) {
+		  	strTable += "<tr>"+
+				"<td>"+obj._id+"</td>"+
+				"<td>"+obj.course_id+"</td>"+
+				"<td>"+obj.name+"</td>"+
+				"<td>"+obj.description+"</td>"+
+			"</tr>";
+		});
 				
 		$('#list').html(strTable);
 	}
